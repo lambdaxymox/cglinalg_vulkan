@@ -14,11 +14,10 @@ extern crate cglinalg;
 
 use cglinalg::{
     Angle,
-    SimdScalarFloat,
-    Radians,
     Matrix4x4,
+    Radians,
+    SimdScalarFloat,
 };
-
 
 /// Construct a new orthographic projection transformation mapping from 
 /// an eye space with a right-handed coordinate system to a clip space with a 

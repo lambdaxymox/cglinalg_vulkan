@@ -1,11 +1,10 @@
 use approx_cmp::assert_relative_eq;
 use cglinalg::{
     Matrix4x4,
-    Vector4,
     Radians,
+    Vector4,
 };
 use core::f32;
-
 
 #[rustfmt::skip]
 #[test]

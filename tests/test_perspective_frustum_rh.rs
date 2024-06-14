@@ -4,7 +4,6 @@ use cglinalg::{
     Vector4,
 };
 
-
 #[rustfmt::skip]
 #[test]
 fn test_perspective_projection_matrix() {
