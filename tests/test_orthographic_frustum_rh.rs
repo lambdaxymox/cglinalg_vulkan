@@ -17,10 +17,10 @@ fn test_orthographic_projection_matrix() {
     let expected = Matrix4x4::new(
         1_f32 / 4_f32, 0_f32,          0_f32,          0_f32,
         0_f32,         2_f32 / 5_f32,  0_f32,          0_f32,
-        0_f32,         0_f32,          1_f32 / 99_f32, 0_f32,
+        0_f32,         0_f32,         -1_f32 / 99_f32, 0_f32,
         0_f32,        -1_f32 / 5_f32, -1_f32 / 99_f32, 1_f32
     );
-    let result = cglinalg_metal::orthographic_frustum_lh(left, right, bottom, top, near, far);
+    let result = cglinalg_metal::orthographic_frustum_rh(left, right, bottom, top, near, far);
 
     assert_eq!(result, expected);
 }
@@ -33,8 +33,8 @@ fn test_orthographic_projection_maps_left_to_negative_one_in_ndc() {
     let top = 3_f32;
     let near = 1_f32;
     let far = 100_f32;
-    let matrix = cglinalg_metal::orthographic_frustum_lh(left, right, bottom, top, near, far);
-    let vector = Vector4::new(left, 0_f32, 2_f32, 1_f32);
+    let matrix = cglinalg_metal::orthographic_frustum_rh(left, right, bottom, top, near, far);
+    let vector = Vector4::new(left, 0_f32, -2_f32, 1_f32);
     let projected_vector = matrix * vector;
     let expected = -1_f32;
     let result = projected_vector.x;
@@ -50,8 +50,8 @@ fn test_orthographic_projection_maps_right_to_positive_one_in_ndc() {
     let top = 3_f32;
     let near = 1_f32;
     let far = 100_f32;
-    let matrix = cglinalg_metal::orthographic_frustum_lh(left, right, bottom, top, near, far);
-    let vector = Vector4::new(right, 0_f32, 2_f32, 1_f32);
+    let matrix = cglinalg_metal::orthographic_frustum_rh(left, right, bottom, top, near, far);
+    let vector = Vector4::new(right, 0_f32, -2_f32, 1_f32);
     let projected_vector = matrix * vector;
     let expected = 1_f32;
     let result = projected_vector.x;
@@ -67,8 +67,8 @@ fn test_orthographic_projection_maps_bottom_to_negative_one_in_ndc() {
     let top = 3_f32;
     let near = 1_f32;
     let far = 100_f32;
-    let matrix = cglinalg_metal::orthographic_frustum_lh(left, right, bottom, top, near, far);
-    let vector = Vector4::new(0_f32, bottom, 2_f32, 1_f32);
+    let matrix = cglinalg_metal::orthographic_frustum_rh(left, right, bottom, top, near, far);
+    let vector = Vector4::new(0_f32, bottom, -2_f32, 1_f32);
     let projected_vector = matrix * vector;
     let expected = -1_f32;
     let result = projected_vector.y;
@@ -84,8 +84,8 @@ fn test_orthographic_projection_maps_top_to_positive_one_in_ndc() {
     let top = 3_f32;
     let near = 1_f32;
     let far = 100_f32;
-    let matrix = cglinalg_metal::orthographic_frustum_lh(left, right, bottom, top, near, far);
-    let vector = Vector4::new(0_f32, top, 2_f32, 1_f32);
+    let matrix = cglinalg_metal::orthographic_frustum_rh(left, right, bottom, top, near, far);
+    let vector = Vector4::new(0_f32, top, -2_f32, 1_f32);
     let projected_vector = matrix * vector;
     let expected = 1_f32;
     let result = projected_vector.y;
@@ -101,8 +101,8 @@ fn test_orthographic_projection_maps_positive_near_to_zero_in_ndc() {
     let top = 3_f32;
     let near = 1_f32;
     let far = 100_f32;
-    let matrix = cglinalg_metal::orthographic_frustum_lh(left, right, bottom, top, near, far);
-    let vector = Vector4::new(0_f32, 0_f32, near, 1_f32);
+    let matrix = cglinalg_metal::orthographic_frustum_rh(left, right, bottom, top, near, far);
+    let vector = Vector4::new(0_f32, 0_f32, -near, 1_f32);
     let projected_vector = matrix * vector;
     let expected = 0_f32;
     let result = projected_vector.z;
@@ -118,8 +118,8 @@ fn test_orthographic_projection_maps_positive_far_to_positive_one_in_ndc() {
     let top = 3_f32;
     let near = 1_f32;
     let far = 100_f32;
-    let matrix = cglinalg_metal::orthographic_frustum_lh(left, right, bottom, top, near, far);
-    let vector = Vector4::new(0_f32, 0_f32, far, 1_f32);
+    let matrix = cglinalg_metal::orthographic_frustum_rh(left, right, bottom, top, near, far);
+    let vector = Vector4::new(0_f32, 0_f32, -far, 1_f32);
     let projected_vector = matrix * vector;
     let expected = 1_f32;
     let result = projected_vector.z;
@@ -135,8 +135,8 @@ fn test_orthographic_projection_homogeneous_coordinate() {
     let top = 3_f32;
     let near = 1_f32;
     let far = 100_f32;
-    let matrix = cglinalg_metal::orthographic_frustum_lh(left, right, bottom, top, near, far);
-    let point = Vector4::new(0_f32, 0_f32, 99_f32, 1_f32);
+    let matrix = cglinalg_metal::orthographic_frustum_rh(left, right, bottom, top, near, far);
+    let point = Vector4::new(0_f32, 0_f32, -99_f32, 1_f32);
     let projected_point = matrix * point;
     let expected = 1_f32;
     let result = projected_point.w;
