@@ -1,0 +1,14 @@
+[package]
+name = "cglinalg_metal"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+
+[dependencies.cglinalg]
+git = "https://github.com/lambdaxymox/cglinalg"
+version = "0.20.0"
+
+[dependencies.approx_cmp]
+git = "https://github.com/lambdaxymox/approx_cmp"
+version = "1.0.0"
