@@ -11,7 +11,7 @@ To use the library in your project, add **cglinalg_metal** as a dependency in
 your `Cargo.toml` file:
 ```toml
 [dependencies]
-cglinalg_metal = "1.0.0"
+cglinalg_metal = "1.0.1"
 ```
 After that, place the crate declaration in either your `lib.rs` or `main.rs` file
 ```rust

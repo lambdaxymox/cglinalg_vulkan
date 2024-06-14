@@ -1,6 +1,6 @@
 [package]
 name = "cglinalg_metal"
-version = "1.0.0"
+version = "1.0.1"
 edition = "2021"
 authors = ["LambdaXymox <lambda.xymox@gmail.com>"]
 description = "A small library providing Metal API specific projection matrices."
