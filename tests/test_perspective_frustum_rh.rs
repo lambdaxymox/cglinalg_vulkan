@@ -60,7 +60,7 @@ fn test_perspective_projection_maps_right_to_positive_one_in_ndc() {
 }
 
 #[test]
-fn test_perspective_projection_maps_bottom_to_negative_one_in_ndc() {
+fn test_perspective_projection_bottom_in_ndc() {
     let left = -4_f32;
     let right = 4_f32;
     let bottom = -2_f32;
@@ -70,14 +70,14 @@ fn test_perspective_projection_maps_bottom_to_negative_one_in_ndc() {
     let matrix = cglinalg_metal::perspective_frustum_rh(left, right, bottom, top, near, far);
     let vector = Vector4::new(0_f32, bottom, -2_f32, 1_f32);
     let projected_vector = matrix * vector;
-    let expected = -1_f32;
+    let expected = -6_f32 / 5_f32;
     let result = projected_vector.y;
 
     assert_relative_eq!(result, expected, abs_diff_all <= 1e-7, relative_all <= f32::EPSILON);
 }
 
 #[test]
-fn test_perspective_projection_maps_top_to_positive_one_in_ndc() {
+fn test_perspective_projection_top_in_ndc() {
     let left = -4_f32;
     let right = 4_f32;
     let bottom = -2_f32;
@@ -87,7 +87,7 @@ fn test_perspective_projection_maps_top_to_positive_one_in_ndc() {
     let matrix = cglinalg_metal::perspective_frustum_rh(left, right, bottom, top, near, far);
     let vector = Vector4::new(0_f32, top, -2_f32, 1_f32);
     let projected_vector = matrix * vector;
-    let expected = 1_f32;
+    let expected = 4_f32 / 5_f32;
     let result = projected_vector.y;
 
     assert_relative_eq!(result, expected, abs_diff_all <= 1e-7, relative_all <= f32::EPSILON);

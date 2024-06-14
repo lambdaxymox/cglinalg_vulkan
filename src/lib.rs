@@ -1,6 +1,7 @@
 extern crate cglinalg;
 
 use cglinalg::{
+    Angle,
     SimdScalarFloat,
     Radians,
     Matrix4x4,
@@ -80,7 +81,36 @@ pub fn orthographic_frustum_rh<S>(left: S, right: S, bottom: S, top: S, near: S,
 where
     S: SimdScalarFloat,
 {
-    todo!()
+    let zero = S::zero();
+    let one = S::one();
+    let two = one + one;
+
+    let c0r0 = two / (right - left);
+    let c0r1 = zero;
+    let c0r2 = zero;
+    let c0r3 = zero;
+
+    let c1r0 = zero;
+    let c1r1 = two / (top - bottom);
+    let c1r2 = zero;
+    let c1r3 = zero;
+
+    let c2r0 =  zero;
+    let c2r1 =  zero;
+    let c2r2 = -one / (far - near);
+    let c2r3 =  zero;
+
+    let c3r0 = -(right + left) / (right - left);
+    let c3r1 = -(top + bottom) / (top - bottom);
+    let c3r2 = -near / (far - near);
+    let c3r3 =  one;
+
+    Matrix4x4::new(
+        c0r0, c0r1, c0r2, c0r3,
+        c1r0, c1r1, c1r2, c1r3,
+        c2r0, c2r1, c2r2, c2r3,
+        c3r0, c3r1, c3r2, c3r3
+    )
 }
 
 /// Construct a new orthographic projection transformation mapping from 
@@ -154,7 +184,36 @@ pub fn orthographic_frustum_lh<S>(left: S, right: S, bottom: S, top: S, near: S,
 where
     S: SimdScalarFloat,
 {
-    todo!()
+    let zero = S::zero();
+    let one = S::one();
+    let two = one + one;
+
+    let c0r0 = two / (right - left);
+    let c0r1 = zero;
+    let c0r2 = zero;
+    let c0r3 = zero;
+
+    let c1r0 = zero;
+    let c1r1 = two / (top - bottom);
+    let c1r2 = zero;
+    let c1r3 = zero;
+
+    let c2r0 = zero;
+    let c2r1 = zero;
+    let c2r2 = one / (far - near);
+    let c2r3 = zero;
+
+    let c3r0 = -(right + left) / (right - left);
+    let c3r1 = -(top + bottom) / (top - bottom);
+    let c3r2 = -near / (far - near);
+    let c3r3 =  one;
+
+    Matrix4x4::new(
+        c0r0, c0r1, c0r2, c0r3,
+        c1r0, c1r1, c1r2, c1r3,
+        c2r0, c2r1, c2r2, c2r3,
+        c3r0, c3r1, c3r2, c3r3
+    )
 }
 
 /// Construct a new perspective field of view projection transformation 
@@ -235,7 +294,37 @@ where
     S: SimdScalarFloat,
     A: Into<Radians<S>>,
 {
-    todo!()
+    let zero = S::zero();
+    let one = S::one();
+    let two = one + one;
+    let range = Angle::tan(vfov.into() / two) * near;
+
+    let c0r0 = near / (range * aspect_ratio);
+    let c0r1 = zero;
+    let c0r2 = zero;
+    let c0r3 = zero;
+
+    let c1r0 = zero;
+    let c1r1 = near / range;
+    let c1r2 = zero;
+    let c1r3 = zero;
+
+    let c2r0 =  zero;
+    let c2r1 =  zero;
+    let c2r2 = -far / (far - near);
+    let c2r3 = -one;
+
+    let c3r0 =  zero;
+    let c3r1 =  zero;
+    let c3r2 = -(far * near) / (far - near);
+    let c3r3 =  zero;
+
+    Matrix4x4::new(
+        c0r0, c0r1, c0r2, c0r3,
+        c1r0, c1r1, c1r2, c1r3,
+        c2r0, c2r1, c2r2, c2r3,
+        c3r0, c3r1, c3r2, c3r3
+    )
 }
 
 /// Construct a new perspective field of view projection transformation 
@@ -314,7 +403,37 @@ where
     S: SimdScalarFloat,
     A: Into<Radians<S>>,
 {
-    todo!()
+    let zero = S::zero();
+    let one = S::one();
+    let two = one + one;
+    let range = Angle::tan(vfov.into() / two) * near;
+
+    let c0r0 = near / (range * aspect_ratio);
+    let c0r1 = zero;
+    let c0r2 = zero;
+    let c0r3 = zero;
+
+    let c1r0 = zero;
+    let c1r1 = near / range;
+    let c1r2 = zero;
+    let c1r3 = zero;
+
+    let c2r0 = zero;
+    let c2r1 = zero;
+    let c2r2 = far / (far - near);
+    let c2r3 = one;
+
+    let c3r0 =  zero;
+    let c3r1 =  zero;
+    let c3r2 = -(far * near) / (far - near);
+    let c3r3 =  zero;
+
+    Matrix4x4::new(
+        c0r0, c0r1, c0r2, c0r3,
+        c1r0, c1r1, c1r2, c1r3,
+        c2r0, c2r1, c2r2, c2r3,
+        c3r0, c3r1, c3r2, c3r3
+    )
 }
 
 
@@ -391,7 +510,36 @@ pub fn perspective_frustum_rh<S>(left: S, right: S, bottom: S, top: S, near: S, 
 where
     S: SimdScalarFloat,
 {
-    todo!()
+    let zero = S::zero();
+    let one = S::one();
+    let two = one + one;
+
+    let c0r0 = (two * near) / (right - left);
+    let c0r1 = zero;
+    let c0r2 = zero;
+    let c0r3 = zero;
+
+    let c1r0 = zero;
+    let c1r1 = (two * near) / (top - bottom);
+    let c1r2 = zero;
+    let c1r3 = zero;
+
+    let c2r0 =  (right + left) / (right - left);
+    let c2r1 =  (top + bottom) / (top - bottom);
+    let c2r2 = -far / (far - near);
+    let c2r3 = -one;
+
+    let c3r0 =  zero;
+    let c3r1 =  zero;
+    let c3r2 = -(far * near) / (far - near);
+    let c3r3 =  zero;
+    
+    Matrix4x4::new(
+        c0r0, c0r1, c0r2, c0r3,
+        c1r0, c1r1, c1r2, c1r3,
+        c2r0, c2r1, c2r2, c2r3,
+        c3r0, c3r1, c3r2, c3r3
+    )
 }
 
 /// Construct a new perspective projection transformation mapping from 
@@ -463,5 +611,34 @@ pub fn perspective_frustum_lh<S>(left: S, right: S, bottom: S, top: S, near: S, 
 where
     S: SimdScalarFloat,
 {
-    todo!()
+    let zero = S::zero();
+    let one = S::one();
+    let two = one + one;
+
+    let c0r0 = (two * near) / (right - left);
+    let c0r1 = zero;
+    let c0r2 = zero;
+    let c0r3 = zero;
+
+    let c1r0 = zero;
+    let c1r1 = (two * near) / (top - bottom);
+    let c1r2 = zero;
+    let c1r3 = zero;
+
+    let c2r0 = -(right + left) / (right - left);
+    let c2r1 = -(top + bottom) / (top - bottom);
+    let c2r2 =  far / (far - near);
+    let c2r3 =  one;
+
+    let c3r0 =  zero;
+    let c3r1 =  zero;
+    let c3r2 = -(far * near) / (far - near);
+    let c3r3 =  zero;
+    
+    Matrix4x4::new(
+        c0r0, c0r1, c0r2, c0r3,
+        c1r0, c1r1, c1r2, c1r3,
+        c2r0, c2r1, c2r2, c2r3,
+        c3r0, c3r1, c3r2, c3r3
+    )
 }
