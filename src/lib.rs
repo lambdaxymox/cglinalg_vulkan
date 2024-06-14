@@ -97,6 +97,8 @@ use cglinalg::{
 /// 
 /// assert_relative_eq!(result, expected, abs_diff_all <= 1e-7, relative_all <= f32::EPSILON);
 /// ```
+#[rustfmt::skip]
+#[inline]
 pub fn orthographic_frustum_rh<S>(left: S, right: S, bottom: S, top: S, near: S, far: S) -> Matrix4x4<S>
 where
     S: SimdScalarFloat,
@@ -219,6 +221,8 @@ where
 /// 
 /// assert_relative_eq!(result, expected, abs_diff_all <= 1e-7, relative_all <= f32::EPSILON);
 /// ```
+#[rustfmt::skip]
+#[inline]
 pub fn orthographic_frustum_lh<S>(left: S, right: S, bottom: S, top: S, near: S, far: S) -> Matrix4x4<S>
 where
     S: SimdScalarFloat,
@@ -351,6 +355,8 @@ where
 /// 
 /// assert_relative_eq!(result, expected, abs_diff_all <= 1e-6, relative_all <= f32::EPSILON);
 /// ```
+#[rustfmt::skip]
+#[inline]
 pub fn perspective_fov_rh<S, A>(vfov: A, aspect_ratio: S, near: S, far: S) -> Matrix4x4<S>
 where
     S: SimdScalarFloat,
@@ -484,6 +490,8 @@ where
 /// 
 /// assert_relative_eq!(result, expected, abs_diff_all <= 1e-6, relative_all <= f32::EPSILON);
 /// ```
+#[rustfmt::skip]
+#[inline]
 pub fn perspective_fov_lh<S, A>(vfov: A, aspect_ratio: S, near: S, far: S) -> Matrix4x4<S>
 where
     S: SimdScalarFloat,
@@ -521,7 +529,6 @@ where
         c3r0, c3r1, c3r2, c3r3
     )
 }
-
 
 /// Construct a new perspective projection transformation mapping from 
 /// an eye space with a right-handed coordinate system to a clip space with a 
@@ -612,6 +619,8 @@ where
 /// 
 /// assert_relative_eq!(result, expected, abs_diff_all <= 1e-7, relative_all <= f32::EPSILON);
 /// ```
+#[rustfmt::skip]
+#[inline]
 pub fn perspective_frustum_rh<S>(left: S, right: S, bottom: S, top: S, near: S, far: S) -> Matrix4x4<S>
 where
     S: SimdScalarFloat,
@@ -733,6 +742,8 @@ where
 /// 
 /// assert_relative_eq!(result, expected, abs_diff_all <= 1e-7, relative_all <= f32::EPSILON);
 /// ```
+#[rustfmt::skip]
+#[inline]
 pub fn perspective_frustum_lh<S>(left: S, right: S, bottom: S, top: S, near: S, far: S) -> Matrix4x4<S>
 where
     S: SimdScalarFloat,
