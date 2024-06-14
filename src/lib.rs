@@ -77,6 +77,26 @@ use cglinalg::{
 /// 
 /// # Example
 /// 
+/// ```
+/// # use approx_cmp::assert_relative_eq;
+/// # use cglinalg::Matrix4x4;
+/// #
+/// let left = -4_f32;
+/// let right = 4_f32;
+/// let bottom = -3_f32;
+/// let top = 3_f32;
+/// let near = 0.1_f32;
+/// let far = 100_f32;
+/// let expected = Matrix4x4::new(
+///     1_f32 / 4_f32, 0_f32,          0_f32,            0_f32,
+///     0_f32,         1_f32 / 3_f32,  0_f32,            0_f32,
+///     0_f32,         0_f32,         -10_f32 / 999_f32, 0_f32,
+///     0_f32,         0_f32,         -1_f32 / 999_f32,  1_f32
+/// );
+/// let result = cglinalg_metal::orthographic_frustum_rh(left, right, bottom, top, near, far);
+/// 
+/// assert_relative_eq!(result, expected, abs_diff_all <= 1e-7, relative_all <= f32::EPSILON);
+/// ```
 pub fn orthographic_frustum_rh<S>(left: S, right: S, bottom: S, top: S, near: S, far: S) -> Matrix4x4<S>
 where
     S: SimdScalarFloat,
@@ -179,7 +199,26 @@ where
 /// 
 /// # Example
 /// 
+/// ```
+/// # use approx_cmp::assert_relative_eq;
+/// # use cglinalg::Matrix4x4;
+/// #
+/// let left = -4_f32;
+/// let right = 4_f32;
+/// let bottom = -3_f32;
+/// let top = 3_f32;
+/// let near = 0.1_f32;
+/// let far = 100_f32;
+/// let expected = Matrix4x4::new(
+///     1_f32 / 4_f32, 0_f32,          0_f32,            0_f32,
+///     0_f32,         1_f32 / 3_f32,  0_f32,            0_f32,
+///     0_f32,         0_f32,          10_f32 / 999_f32, 0_f32,
+///     0_f32,         0_f32,         -1_f32 / 999_f32,  1_f32
+/// );
+/// let result = cglinalg_metal::orthographic_frustum_lh(left, right, bottom, top, near, far);
 /// 
+/// assert_relative_eq!(result, expected, abs_diff_all <= 1e-7, relative_all <= f32::EPSILON);
+/// ```
 pub fn orthographic_frustum_lh<S>(left: S, right: S, bottom: S, top: S, near: S, far: S) -> Matrix4x4<S>
 where
     S: SimdScalarFloat,
@@ -288,7 +327,30 @@ where
 /// 
 /// # Example
 /// 
+/// ```
+/// # use approx_cmp::assert_relative_eq;
+/// # use cglinalg::Matrix4x4;
+/// # use cglinalg::Degrees;
+/// #
+/// # use core::f32;
+/// #
+/// let vfov = Degrees(72_f32);
+/// let aspect_ratio = 4_f32 / 3_f32;
+/// let near = 0.1_f32;
+/// let far = 100_f32;
+/// let tan_vfov_over_two = f32::sqrt(5_f32 - 2_f32 * f32::sqrt(5_f32));
+/// let a = 1_f32 / (aspect_ratio * tan_vfov_over_two);
+/// let b = 1_f32 / tan_vfov_over_two;
+/// let expected = Matrix4x4::new(
+///     a,     0_f32,  0_f32,               0_f32,
+///     0_f32, b,      0_f32,               0_f32,
+///     0_f32, 0_f32, -1000_f32 / 999_f32, -1_f32,
+///     0_f32, 0_f32, -100_f32 / 999_f32,   0_f32
+/// );
+/// let result = cglinalg_metal::perspective_fov_rh(vfov, aspect_ratio, near, far);
 /// 
+/// assert_relative_eq!(result, expected, abs_diff_all <= 1e-6, relative_all <= f32::EPSILON);
+/// ```
 pub fn perspective_fov_rh<S, A>(vfov: A, aspect_ratio: S, near: S, far: S) -> Matrix4x4<S>
 where
     S: SimdScalarFloat,
@@ -398,6 +460,30 @@ where
 ///
 /// # Example
 /// 
+/// ```
+/// # use approx_cmp::assert_relative_eq;
+/// # use cglinalg::Matrix4x4;
+/// # use cglinalg::Degrees;
+/// #
+/// # use core::f32;
+/// #
+/// let vfov = Degrees(72_f32);
+/// let aspect_ratio = 4_f32 / 3_f32;
+/// let near = 0.1_f32;
+/// let far = 100_f32;
+/// let tan_vfov_over_two = f32::sqrt(5_f32 - 2_f32 * f32::sqrt(5_f32));
+/// let a = 1_f32 / (aspect_ratio * tan_vfov_over_two);
+/// let b = 1_f32 / tan_vfov_over_two;
+/// let expected = Matrix4x4::new(
+///     a,     0_f32,  0_f32,              0_f32,
+///     0_f32, b,      0_f32,              0_f32,
+///     0_f32, 0_f32,  1000_f32 / 999_f32, 1_f32,
+///     0_f32, 0_f32, -100_f32 / 999_f32,  0_f32
+/// );
+/// let result = cglinalg_metal::perspective_fov_lh(vfov, aspect_ratio, near, far);
+/// 
+/// assert_relative_eq!(result, expected, abs_diff_all <= 1e-6, relative_all <= f32::EPSILON);
+/// ```
 pub fn perspective_fov_lh<S, A>(vfov: A, aspect_ratio: S, near: S, far: S) -> Matrix4x4<S>
 where
     S: SimdScalarFloat,
@@ -506,6 +592,26 @@ where
 /// 
 /// # Example
 /// 
+/// ```
+/// # use approx_cmp::assert_relative_eq;
+/// # use cglinalg::Matrix4x4;
+/// #
+/// let left = -4_f32;
+/// let right = 4_f32;
+/// let bottom = -3_f32;
+/// let top = 3_f32;
+/// let near = 0.1_f32;
+/// let far = 100_f32;
+/// let expected = Matrix4x4::new(
+///     1_f32 / 40_f32, 0_f32,           0_f32,               0_f32,
+///     0_f32,          1_f32 / 30_f32,  0_f32,               0_f32,
+///     0_f32,          0_f32,          -1000_f32 / 999_f32, -1_f32,
+///     0_f32,          0_f32,          -100_f32 / 999_f32,   0_f32
+/// );
+/// let result = cglinalg_metal::perspective_frustum_rh(left, right, bottom, top, near, far);
+/// 
+/// assert_relative_eq!(result, expected, abs_diff_all <= 1e-7, relative_all <= f32::EPSILON);
+/// ```
 pub fn perspective_frustum_rh<S>(left: S, right: S, bottom: S, top: S, near: S, far: S) -> Matrix4x4<S>
 where
     S: SimdScalarFloat,
@@ -607,6 +713,26 @@ where
 /// 
 /// # Example
 /// 
+/// ```
+/// # use approx_cmp::assert_relative_eq;
+/// # use cglinalg::Matrix4x4;
+/// #
+/// let left = -4_f32;
+/// let right = 4_f32;
+/// let bottom = -3_f32;
+/// let top = 3_f32;
+/// let near = 0.1_f32;
+/// let far = 100_f32;
+/// let expected = Matrix4x4::new(
+///     1_f32 / 40_f32, 0_f32,           0_f32,              0_f32,
+///     0_f32,          1_f32 / 30_f32,  0_f32,              0_f32,
+///     0_f32,          0_f32,           1000_f32 / 999_f32, 1_f32,
+///     0_f32,          0_f32,          -100_f32 / 999_f32,  0_f32
+/// );
+/// let result = cglinalg_metal::perspective_frustum_lh(left, right, bottom, top, near, far);
+/// 
+/// assert_relative_eq!(result, expected, abs_diff_all <= 1e-7, relative_all <= f32::EPSILON);
+/// ```
 pub fn perspective_frustum_lh<S>(left: S, right: S, bottom: S, top: S, near: S, far: S) -> Matrix4x4<S>
 where
     S: SimdScalarFloat,
