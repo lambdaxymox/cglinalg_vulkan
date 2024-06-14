@@ -6,6 +6,7 @@ use cglinalg::{
     Matrix4x4,
 };
 
+
 /// Construct a new orthographic projection transformation mapping from 
 /// an eye space with a right-handed coordinate system to a clip space with a 
 /// left-handed coordinate coordinate system compatible with Metal's normalized 
