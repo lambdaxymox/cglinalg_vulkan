@@ -324,7 +324,7 @@ where
 /// 
 /// * `vfov` is the vertical angle in radians of the symmetric viewing frustum
 /// centered at the eye position in the **xy-plane**.
-/// * `aspect_ratio` is the ratio of the width of the symmmetric viewing frustum to the
+/// * `aspect_ratio` is the ratio of the width of the symmetric viewing frustum to the
 /// height of the symmetric viewing frustum.
 /// * `near` is the distance along the **negative z-axis** of the near plane from the
 /// eye in eye space. The near plane is a plane parallel to the **xy-plane** along
