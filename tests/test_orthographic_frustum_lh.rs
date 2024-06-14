@@ -15,10 +15,10 @@ fn test_orthographic_projection_matrix() {
     let near = 1_f32;
     let far = 100_f32;
     let expected = Matrix4x4::new(
-        1_f32 / 4_f32, 0_f32,          0_f32,          0_f32,
-        0_f32,         2_f32 / 5_f32,  0_f32,          0_f32,
-        0_f32,         0_f32,          1_f32 / 99_f32, 0_f32,
-        0_f32,        -1_f32 / 5_f32, -1_f32 / 99_f32, 1_f32
+        1_f32 / 4_f32,  0_f32,          0_f32,          0_f32,
+        0_f32,          2_f32 / 5_f32,  0_f32,          0_f32,
+        0_f32,          0_f32,          1_f32 / 99_f32, 0_f32,
+        0_f32,         -1_f32 / 5_f32, -1_f32 / 99_f32, 1_f32
     );
     let result = cglinalg_metal::orthographic_frustum_lh(left, right, bottom, top, near, far);
 
