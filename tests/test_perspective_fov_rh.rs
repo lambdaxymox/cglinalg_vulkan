@@ -25,7 +25,7 @@ fn test_perspective_projection_matrix() {
 }
 
 #[test]
-fn test_perspective_projection_maps_left_to_negative_one_in_ndc() {
+fn test_perspective_projection_maps_left_to_negative_one_in_clip_space() {
     let vfov = Radians(f32::consts::PI / 2_f32);
     let aspect_ratio = 4_f32 / 3_f32;
     let near = 1_f32;
@@ -41,7 +41,7 @@ fn test_perspective_projection_maps_left_to_negative_one_in_ndc() {
 }
 
 #[test]
-fn test_perspective_projection_maps_right_to_positive_one_in_ndc() {
+fn test_perspective_projection_maps_right_to_positive_one_in_clip_space() {
     let vfov = Radians(f32::consts::PI / 2_f32);
     let aspect_ratio = 4_f32 / 3_f32;
     let near = 1_f32;
@@ -57,7 +57,7 @@ fn test_perspective_projection_maps_right_to_positive_one_in_ndc() {
 }
 
 #[test]
-fn test_perspective_projection_maps_bottom_to_negative_one_in_ndc() {
+fn test_perspective_projection_maps_bottom_to_negative_one_in_clip_space() {
     let vfov = Radians(f32::consts::PI / 2_f32);
     let aspect_ratio = 4_f32 / 3_f32;
     let near = 1_f32;
@@ -73,7 +73,7 @@ fn test_perspective_projection_maps_bottom_to_negative_one_in_ndc() {
 }
 
 #[test]
-fn test_perspective_projection_maps_top_to_positive_one_in_ndc() {
+fn test_perspective_projection_maps_top_to_positive_one_in_clip_space() {
     let vfov = Radians(f32::consts::PI / 2_f32);
     let aspect_ratio = 4_f32 / 3_f32;
     let near = 1_f32;
@@ -89,7 +89,7 @@ fn test_perspective_projection_maps_top_to_positive_one_in_ndc() {
 }
 
 #[test]
-fn test_perspective_projection_maps_positive_near_to_zero_in_ndc() {
+fn test_perspective_projection_maps_positive_near_to_zero_in_clip_space() {
     let vfov = Radians(f32::consts::PI / 2_f32);
     let aspect_ratio = 4_f32 / 3_f32;
     let near = 1_f32;
@@ -104,7 +104,7 @@ fn test_perspective_projection_maps_positive_near_to_zero_in_ndc() {
 }
 
 #[test]
-fn test_perspective_projection_maps_positive_far_to_positive_one_in_ndc() {
+fn test_perspective_projection_maps_positive_far_to_positive_one_in_clip_space() {
     let vfov = Radians(f32::consts::PI / 2_f32);
     let aspect_ratio = 4_f32 / 3_f32;
     let near = 1_f32;

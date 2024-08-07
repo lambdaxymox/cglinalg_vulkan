@@ -25,7 +25,7 @@ fn test_perspective_projection_matrix() {
 }
 
 #[test]
-fn test_perspective_projection_maps_left_to_negative_one_in_ndc() {
+fn test_perspective_projection_maps_left_to_negative_one_in_clip_space() {
     let left = -4_f32;
     let right = 4_f32;
     let bottom = -2_f32;
@@ -42,7 +42,7 @@ fn test_perspective_projection_maps_left_to_negative_one_in_ndc() {
 }
 
 #[test]
-fn test_perspective_projection_maps_right_to_positive_one_in_ndc() {
+fn test_perspective_projection_maps_right_to_positive_one_in_clip_space() {
     let left = -4_f32;
     let right = 4_f32;
     let bottom = -2_f32;
@@ -59,7 +59,7 @@ fn test_perspective_projection_maps_right_to_positive_one_in_ndc() {
 }
 
 #[test]
-fn test_perspective_projection_bottom_in_ndc() {
+fn test_perspective_projection_bottom_in_clip_space() {
     let left = -4_f32;
     let right = 4_f32;
     let bottom = -2_f32;
@@ -76,7 +76,7 @@ fn test_perspective_projection_bottom_in_ndc() {
 }
 
 #[test]
-fn test_perspective_projection_top_in_ndc() {
+fn test_perspective_projection_top_in_clip_space() {
     let left = -4_f32;
     let right = 4_f32;
     let bottom = -2_f32;
@@ -93,7 +93,7 @@ fn test_perspective_projection_top_in_ndc() {
 }
 
 #[test]
-fn test_perspective_projection_maps_negative_near_to_zero_in_ndc() {
+fn test_perspective_projection_maps_negative_near_to_zero_in_clip_space() {
     let left = -4_f32;
     let right = 4_f32;
     let bottom = -2_f32;
@@ -110,7 +110,7 @@ fn test_perspective_projection_maps_negative_near_to_zero_in_ndc() {
 }
 
 #[test]
-fn test_perspective_projection_maps_negative_far_to_positive_one_in_ndc() {
+fn test_perspective_projection_maps_negative_far_to_positive_one_in_clip_space() {
     let left = -4_f32;
     let right = 4_f32;
     let bottom = -2_f32;
