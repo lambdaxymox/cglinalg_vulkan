@@ -1,6 +1,6 @@
 [package]
 name = "cglinalg_vulkan"
-version = "1.0.2"
+version = "2.0.0"
 edition = "2021"
 authors = ["LambdaXymox <lambda.xymox@gmail.com>"]
 description = "A small library providing Vulkan API specific projection matrices."

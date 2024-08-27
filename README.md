@@ -11,7 +11,7 @@ To use the library in your project, add **cglinalg_vulkan** as a dependency in
 your `Cargo.toml` file:
 ```toml
 [dependencies]
-cglinalg_vulkan = "1.0.2"
+cglinalg_vulkan = "2.0.0"
 ```
 After that, place the crate declaration in either your `lib.rs` or `main.rs` file
 ```rust
