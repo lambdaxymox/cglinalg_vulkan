@@ -7,10 +7,10 @@ use cglinalg::{
 #[rustfmt::skip]
 #[test]
 fn test_orthographic_projection_matrix() {
-    let left = -4_f32;
+    let left = 4_f32;
     let right = 4_f32;
     let bottom = 2_f32;
-    let top = -3_f32;
+    let top = 3_f32;
     let near = 1_f32;
     let far = 100_f32;
     let expected = Matrix4x4::new(
@@ -26,14 +26,14 @@ fn test_orthographic_projection_matrix() {
 
 #[test]
 fn test_orthographic_projection_maps_left_to_negative_one_in_clip_space() {
-    let left = -4_f32;
+    let left = 4_f32;
     let right = 4_f32;
     let bottom = 2_f32;
-    let top = -3_f32;
+    let top = 3_f32;
     let near = 1_f32;
     let far = 100_f32;
     let matrix = cglinalg_vulkan::orthographic_frustum(left, right, bottom, top, near, far);
-    let vector = Vector4::new(left, 0_f32, 2_f32, 1_f32);
+    let vector = Vector4::new(-left, 0_f32, 2_f32, 1_f32);
     let projected_vector = matrix * vector;
     let expected = -1_f32;
     let result = projected_vector.x;
@@ -43,10 +43,10 @@ fn test_orthographic_projection_maps_left_to_negative_one_in_clip_space() {
 
 #[test]
 fn test_orthographic_projection_maps_right_to_positive_one_in_clip_space() {
-    let left = -4_f32;
+    let left = 4_f32;
     let right = 4_f32;
     let bottom = 2_f32;
-    let top = -3_f32;
+    let top = 3_f32;
     let near = 1_f32;
     let far = 100_f32;
     let matrix = cglinalg_vulkan::orthographic_frustum(left, right, bottom, top, near, far);
@@ -60,10 +60,10 @@ fn test_orthographic_projection_maps_right_to_positive_one_in_clip_space() {
 
 #[test]
 fn test_orthographic_projection_maps_bottom_to_positive_one_in_clip_space() {
-    let left = -4_f32;
+    let left = 4_f32;
     let right = 4_f32;
     let bottom = 2_f32;
-    let top = -3_f32;
+    let top = 3_f32;
     let near = 1_f32;
     let far = 100_f32;
     let matrix = cglinalg_vulkan::orthographic_frustum(left, right, bottom, top, near, far);
@@ -77,14 +77,14 @@ fn test_orthographic_projection_maps_bottom_to_positive_one_in_clip_space() {
 
 #[test]
 fn test_orthographic_projection_maps_top_to_negative_one_in_clip_space() {
-    let left = -4_f32;
+    let left = 4_f32;
     let right = 4_f32;
     let bottom = 2_f32;
-    let top = -3_f32;
+    let top = 3_f32;
     let near = 1_f32;
     let far = 100_f32;
     let matrix = cglinalg_vulkan::orthographic_frustum(left, right, bottom, top, near, far);
-    let vector = Vector4::new(0_f32, top, 2_f32, 1_f32);
+    let vector = Vector4::new(0_f32, -top, 2_f32, 1_f32);
     let projected_vector = matrix * vector;
     let expected = -1_f32;
     let result = projected_vector.y;
@@ -94,10 +94,10 @@ fn test_orthographic_projection_maps_top_to_negative_one_in_clip_space() {
 
 #[test]
 fn test_orthographic_projection_maps_positive_near_to_zero_in_clip_space() {
-    let left = -4_f32;
+    let left = 4_f32;
     let right = 4_f32;
     let bottom = 2_f32;
-    let top = -3_f32;
+    let top = 3_f32;
     let near = 1_f32;
     let far = 100_f32;
     let matrix = cglinalg_vulkan::orthographic_frustum(left, right, bottom, top, near, far);
@@ -111,10 +111,10 @@ fn test_orthographic_projection_maps_positive_near_to_zero_in_clip_space() {
 
 #[test]
 fn test_orthographic_projection_maps_positive_far_to_positive_one_in_clip_space() {
-    let left = -4_f32;
+    let left = 4_f32;
     let right = 4_f32;
     let bottom = 2_f32;
-    let top = -3_f32;
+    let top = 3_f32;
     let near = 1_f32;
     let far = 100_f32;
     let matrix = cglinalg_vulkan::orthographic_frustum(left, right, bottom, top, near, far);
@@ -128,10 +128,10 @@ fn test_orthographic_projection_maps_positive_far_to_positive_one_in_clip_space(
 
 #[test]
 fn test_orthographic_projection_homogeneous_coordinate() {
-    let left = -4_f32;
+    let left = 4_f32;
     let right = 4_f32;
     let bottom = 2_f32;
-    let top = -3_f32;
+    let top = 3_f32;
     let near = 1_f32;
     let far = 100_f32;
     let matrix = cglinalg_vulkan::orthographic_frustum(left, right, bottom, top, near, far);
